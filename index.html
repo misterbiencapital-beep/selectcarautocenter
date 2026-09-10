@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUITA AUTO | Especialistas em Veículos Financiados</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           1. VARIÁVEIS E RESET (UI/UX PREMIUM)
+           ========================================== */
+        :root {
+            --black-bg: #08090A;
+            --dark-card: #121416;
+            --gold: #C9A24A;
+            --gold-hover: #E5C169;
+            --white: #FFFFFF;
+            --gray-text: #A0A0A0;
+            --input-bg: #1A1C1E;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--black-bg);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .section-padding { padding: 100px 0; }
+
+        /* ==========================================
+           2. HEADER & NAVIGATION (PURE CSS MENU)
+           ========================================== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(8, 9, 10, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 162, 74, 0.2);
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--white); }
+        .logo span { color: var(--gold); }
+
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a {
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Menu Mobile Toggle */
+        #menu-toggle { display: none; }
+        .menu-icon { display: none; cursor: pointer; color: var(--gold); font-size: 1.5rem; }
+
+        /* ==========================================
+           3. HERO SECTION
+           ========================================== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(8,9,10,0.8), rgba(8,9,10,0.9)), url('suvluxo.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content { max-width: 900px; margin: 0 auto; }
+        .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 25px; line-height: 1.1; font-weight: 900; }
+        .hero-content h1 span { color: var(--gold); }
+        .hero-content p { font-size: 1.1rem; color: var(--gray-text); margin-bottom: 40px; max-width: 600px; margin-inline: auto; }
+
+        .btn-main {
+            padding: 18px 40px;
+            background: var(--gold);
+            color: var(--black-bg);
+            font-weight: 800;
+            border-radius: 4px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .btn-main:hover { background: var(--gold-hover); transform: translateY(-3px); }
+
+        /* ==========================================
+           4. BANCOS (STYLE PREMIUM)
+           ========================================== */
+        .banks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 40px; }
+        .bank-card {
+            background: var(--dark-card);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+        .bank-card h3 { font-size: 1.1rem; letter-spacing: 2px; }
+        .itau { border-bottom: 4px solid #EC7000; }
+        .bradesco { border-bottom: 4px solid #CC092F; }
+        .santander { border-bottom: 4px solid #EC0000; }
+        .bv { border-bottom: 4px solid #002D72; }
+        .bank-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+
+        /* ==========================================
+           5. SITUAÇÕES & CARROS ANTES DO LEILÃO
+           ========================================== */
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.2rem; margin-bottom: 15px; }
+        .section-title .line { width: 60px; height: 3px; background: var(--gold); margin: 0 auto; }
+
+        .sit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .sit-card {
+            background: var(--dark-card);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+        .sit-card h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.2rem; }
+        .sit-card p { color: var(--gray-text); font-size: 0.9rem; }
+        .sit-card:hover { border-color: var(--gold); background: #16181a; }
+        .leilao-card { border: 1px solid var(--gold); background: linear-gradient(145deg, #121416, #1c1801); }
+
+        /* ==========================================
+           6. FORMULÁRIO DE AVALIAÇÃO (ESTILO IMAGEM)
+           ========================================== */
+        .form-section { background: var(--black-bg); text-align: center; }
+        .form-section h2 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+        .form-section p { color: var(--gray-text); margin-bottom: 40px; }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--dark-card);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 1rem; color: var(--white); }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 10px;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-send {
+            display: block;
+            width: 100%;
+            background: var(--gold);
+            color: var(--black-bg);
+            text-align: center;
+            padding: 18px;
+            border-radius: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: var(--transition);
+        }
+        .btn-send:hover { transform: scale(1.02); background: var(--gold-hover); }
+
+        /* ==========================================
+           7. GALERIA (9 IMAGENS)
+           ========================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item { height: 250px; overflow: hidden; border-radius: 10px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: var(--transition); }
+        .gallery-item:hover img { filter: brightness(1); transform: scale(1.05); }
+
+        /* ==========================================
+           8. FOOTER & WHATSAPP
+           ========================================== */
+        footer { padding: 60px 0; background: #050505; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        .wpp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 2000;
+        }
+        .wpp-float svg { width: 30px; fill: white; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .menu-icon { display: block; }
+            .form-section h2 { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">QUITA<span>AUTO</span></a>
+            <nav class="nav-links">
+                <a href="#inicio">Início</a>
+                <a href="#situacoes">Situações</a>
+                <a href="#galeria">Veículos</a>
+                <a href="#avaliar">Avaliação</a>
+            </nav>
+            <label for="menu-toggle" class="menu-icon">☰</label>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="container hero-content">
+            <span class="hero-badge">Consultoria Automotiva Premium</span>
+            <h1>Compramos seu veículo mesmo com <span>parcelas em atraso</span></h1>
+            <p>Especialistas em quitação bancária, busca e apreensão e negociações de pré-leilão. Transparência e rapidez no processo.</p>
+            <a href="#avaliar" class="btn-main">Avaliar meu veículo</a>
+        </div>
+    </section>
+
+    <section class="banks section-padding">
+        <div class="container">
+            <div class="banks-grid">
+                <div class="bank-card itau"><h3>ITAÚ</h3></div>
+                <div class="bank-card bradesco"><h3>BRADESCO</h3></div>
+                <div class="bank-card santander"><h3>SANTANDER</h3></div>
+                <div class="bank-card bv"><h3>BV FINANCEIRA</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="situacoes">
+        <div class="container">
+            <div class="section-title">
+                <h2>O que analisamos</h2>
+                <div class="line"></div>
+            </div>
+            <div class="sit-grid">
+                <div class="sit-card leilao-card">
+                    <h3>Carros antes do Leilão</h3>
+                    <p>Atuamos com urgência para quitar seu veículo antes que o banco leve a leilão, protegendo seu CPF e patrimônio.</p>
+                </div>
+                <div class="sit-card">
+                    <h3>Parcelas em Atraso</h3>
+                    <p>Quitamos o débito total e resolvemos a situação junto ao banco emissor em tempo recorde.</p>
+                </div>
+                <div class="sit-card">
+                    <h3>Financiamento Ativo</h3>
+                    <p>Compramos seu veículo mesmo que ele ainda esteja alienado. Pagamento à vista do saldo devedor.</p>
+                </div>
+                <div class="sit-card">
+                    <h3>Busca e Apreensão</h3>
+                    <p>Suporte jurídico e financeiro para casos onde o processo de retomada do bem já foi iniciado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding form-section" id="avaliar">
+        <div class="container">
+            <h2>Faça uma avaliação</h2>
+            <p>Preencha o formulário e envie pelo WhatsApp.</p>
+            
+            <div class="form-container">
+                <div class="form-group">
+                    <label>Seu nome</label>
+                    <input type="text" placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="text" placeholder="(00) 00000-0000">
+                </div>
+                <div class="form-group">
+                    <label>Veículo</label>
+                    <input type="text" placeholder="Ex.: HB20 2019">
+                </div>
+                <div class="form-group">
+                    <label>Situação</label>
+                    <select>
+                        <option>Parcelas em atraso</option>
+                        <option>Carros antes do leilão</option>
+                        <option>Financiamento Ativo</option>
+                        <option>Busca e Apreensão</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Mensagem</label>
+                    <textarea rows="4" placeholder="Conte brevemente a situação do veículo"></textarea>
+                </div>
+                <a href="https://wa.me/5511940140839?text=Olá, quero uma avaliação para o meu veículo." class="btn-send">
+                    Enviar pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="galeria">
+        <div class="container">
+            <div class="section-title">
+                <h2>Veículos Negociados</h2>
+                <div class="line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="carros.jpg"></div>
+                <div class="gallery-item"><img src="espotivos.jpg"></div>
+                <div class="gallery-item"><img src="cabrolet.jpg"></div>
+                <div class="gallery-item"><img src="interior2.jpg"></div>
+                <div class="gallery-item"><img src="painelinterno.jpg"></div>
+                <div class="gallery-item"><img src="varanda.jpg"></div>
+                <div class="gallery-item"><img src="suvluxo.jpg"></div>
+                <div class="gallery-item"><img src="negociofeito.jpg"></div>
+                <div class="gallery-item"><img src="entregadechaves.jpg"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">QUITA<span>AUTO</span></div>
+            <p style="color: var(--gray-text); margin-top: 15px;">&copy; 2024 Quita Auto - Soluções Automotivas Premium. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511940140839" class="wpp-float" target="_blank">
+        <svg viewBox="0 0 32 32"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.48 2.01 7.79l-2.01 7.21 7.387-1.94c2.23 1.227 4.793 1.94 7.513 1.94 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.408 0-4.664-0.612-6.635-1.684l-0.476-0.26-4.385 1.151 1.171-4.201-0.285-0.453c-1.189-1.896-1.883-4.143-1.883-6.553 0-7.363 5.989-13.352 13.352-13.352s13.352 5.989 13.352 13.352c0 7.363-5.989 13.352-13.352 13.352zM22.091 18.672c-0.333-0.167-1.971-0.971-2.276-1.083s-0.528-0.167-0.75 0.167c-0.222 0.333-0.861 1.083-1.055 1.306s-0.389 0.25-0.722 0.083c-0.333-0.167-1.405-0.518-2.675-1.651-0.988-0.88-1.654-1.968-1.849-2.301s-0.021-0.512 0.146-0.678c0.15-0.149 0.333-0.389 0.5-0.583s0.222-0.333 0.333-0.556c0.111-0.222 0.056-0.417-0.028-0.583s-0.75-1.806-1.028-2.472c-0.271-0.649-0.546-0.562-0.75-0.572s-0.417-0.010-0.639-0.010c-0.222 0-0.583 0.083-0.889 0.417s-1.167 1.139-1.167 2.778 1.194 3.222 1.361 3.444c0.167 0.222 2.35 3.589 5.692 5.035 0.795 0.344 1.416 0.55 1.901 0.704 0.798 0.253 1.525 0.218 2.098 0.132 0.641-0.096 1.971-0.806 2.25-1.583s0.278-1.444 0.194-1.583c-0.083-0.139-0.306-0.222-0.639-0.389z"></path></svg>
+    </a>
+
+</body>
+</html>
